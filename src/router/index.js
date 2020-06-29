@@ -134,15 +134,6 @@ export const asyncRoutes = [
         meta: {
           title: '登录记录'
         }
-      },
-      {
-        path: 'analysis',
-        component: () => import('@/views/user/analysis'),
-        name: 'UserAnalysis',
-        meta: {
-          title: '用户分析',
-          roles: [4, 5] // you can set roles in root nav
-        }
       }
     ]
   },
