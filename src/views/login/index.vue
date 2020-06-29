@@ -54,7 +54,6 @@
 
 <script>
 import { validEmail } from '@/utils/validate'
-// import SocialSign from './components/SocialSignin'
 import { getUUID } from '@/utils/tool'
 import { getCaptchaCode } from '@/api/userAction'
 
@@ -203,6 +202,24 @@ export default {
         return acc
       }, {})
     }
+    // afterQRScan() {
+    //   if (e.key === 'x-admin-oauth-code') {
+    //     const code = getQueryObject(e.newValue)
+    //     const codeMap = {
+    //       wechat: 'code',
+    //       tencent: 'code'
+    //     }
+    //     const type = codeMap[this.auth_type]
+    //     const codeName = code[type]
+    //     if (codeName) {
+    //       this.$store.dispatch('LoginByThirdparty', codeName).then(() => {
+    //         this.$router.push({ path: this.redirect || '/' })
+    //       })
+    //     } else {
+    //       alert('第三方登录失败')
+    //     }
+    //   }
+    // }
   }
 }
 </script>
@@ -252,21 +269,17 @@ $cursor: #fff;
     color: #454545;
   }
 }
-
 </style>
 
 <style lang="scss" scoped>
-$bg:#b5bcc2;
-$dark_gray:#b7cdda;
+$bg:#2d3a4b;
+$dark_gray:#889aa4;
 $light_gray:#eee;
 
 .login-container {
   min-height: 100%;
   width: 100%;
   background-color: $bg;
-//   background-image: url('../../assets/bg.jpg');
-  background-size: cover;
-  background-position: center;
   overflow: hidden;
 
   .login-form {
