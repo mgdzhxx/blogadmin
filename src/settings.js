@@ -2,10 +2,10 @@
  * @Author: zhxx
  * @Date: 2020-06-28 10:35:34
  * @LastEditors: zhxx
- * @LastEditTime: 2020-06-28 14:16:17
+ * @LastEditTime: 2020-06-29 10:03:25
  */
 module.exports = {
-  title: 'GoTemplate 控制台',
+  title: '矿场管理控制台',
 
   /**
    * @type {boolean} true | false

@@ -3,7 +3,7 @@
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" autocomplete="on" label-position="left">
 
       <div class="title-container">
-        <h3 class="title">GoTemplate 后台管理登录</h3>
+        <h3 class="title">矿场后台管理登录</h3>
       </div>
 
       <el-form-item prop="signinInput">
