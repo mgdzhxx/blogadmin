@@ -47,14 +47,14 @@ module.exports = {
     //     }
     //   },
       [process.env.VUE_APP_BASE_API]: {
-        target: 'http://127.0.0.1:7000/v1/api',
+        target: 'http://127.0.0.1:7020/v1/api',
         changeOrigin: true,
         pathRewrite: {
           ['^' + process.env.VUE_APP_BASE_API]: ''
         }
       },
       [process.env.VUE_APP_ADMIN_API]: {
-        target: 'http://127.0.0.1:7000/v1/admin',
+        target: 'http://127.0.0.1:7020/v1/admin',
         changeOrigin: true,
         pathRewrite: {
           ['^' + process.env.VUE_APP_ADMIN_API]: ''

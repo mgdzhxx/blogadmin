@@ -107,32 +107,6 @@ export const constantRoutes = [
  * the routes that need to be dynamically loaded based on user roles
  */
 export const asyncRoutes = [
-//   {
-//     path: '/machine',
-//     component: Layout,
-//     redirect: '/machine/list',
-//     name: 'Machines',
-//     meta: {
-//       title: '机器监控',
-//       icon: 'example',
-//       roles: [1, 4, 5] // you can set roles in root nav
-//     },
-//     children: [
-//       {
-//         path: 'list',
-//         component: () => import('@/views/dashboard/index'),
-//         name: 'MachineList',
-//         meta: { title: '服务器监控', icon: 'edit' }
-//       },
-//       {
-//         path: 'detail/:id',
-//         component: () => import('@/views/dashboard/admin/detail'),
-//         name: 'MachineDetail',
-//         meta: { title: '服务器详情', icon: 'edit' },
-//         hidden: true
-//       }
-//     ]
-//   },
   {
     path: '/user',
     component: Layout,
@@ -166,8 +140,82 @@ export const asyncRoutes = [
         component: () => import('@/views/user/analysis'),
         name: 'UserAnalysis',
         meta: {
-          title: '用户分析'
-          // if do not set roles, means: this page does not require permission
+          title: '用户分析',
+          roles: [4, 5] // you can set roles in root nav
+        }
+      }
+    ]
+  },
+  {
+    path: '/mine',
+    component: Layout,
+    redirect: '/mine/list',
+    alwaysShow: true, // will always show the root menu
+    name: 'Mines',
+    meta: {
+      title: '矿场管理',
+      icon: 'list',
+      roles: [4, 5] // you can set roles in root nav
+    },
+    children: [
+      {
+        path: 'list',
+        component: () => import('@/views/mine/list'),
+        name: 'MineList',
+        meta: {
+          title: '矿场列表'
+        }
+      },
+      {
+        path: 'machine',
+        component: () => import('@/views/mine/machine'),
+        name: 'LoginRecord',
+        meta: {
+          title: '机器列表'
+        }
+      }
+    ]
+  },
+  {
+    path: '/order',
+    component: Layout,
+    redirect: '/order/list',
+    alwaysShow: true, // will always show the root menu
+    name: 'Orders',
+    meta: {
+      title: '订单管理',
+      icon: 'list',
+      roles: [4, 5] // you can set roles in root nav
+    },
+    children: [
+      {
+        path: 'list',
+        component: () => import('@/views/order/list'),
+        name: 'OrderList',
+        meta: {
+          title: '订单列表'
+        }
+      }
+    ]
+  },
+  {
+    path: '/task',
+    component: Layout,
+    redirect: '/task/list',
+    alwaysShow: true, // will always show the root menu
+    name: 'Tasks',
+    meta: {
+      title: '任务管理',
+      icon: 'list',
+      roles: [4, 5] // you can set roles in root nav
+    },
+    children: [
+      {
+        path: 'list',
+        component: () => import('@/views/task/list'),
+        name: 'TaskList',
+        meta: {
+          title: '任务列表'
         }
       }
     ]
