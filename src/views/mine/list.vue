@@ -40,12 +40,12 @@
       </el-table-column>
       <el-table-column label="矿机可用数量" align="center" width="150px">
         <template slot-scope="{row}">
-          <span @click="handleUpdateUserInfo(row.mine_id,1)">{{ row.ava_acount }}</span>
+          <span @click="AutoUpdateMineInfo(row.mine_id,1)">{{ row.ava_acount }}</span>
         </template>
       </el-table-column>
       <el-table-column label="总数量" align="center" width="95">
         <template slot-scope="scope">
-          <span @click="handleUpdateUserInfo(row.mine_id,2)">{{ scope.row.total_acount }}</span>
+          <span @click="AutoUpdateMineInfo(row.mine_id,2)">{{ scope.row.total_acount }}</span>
         </template>
       </el-table-column>
       <el-table-column label="更新时间" width="150px" align="center">
@@ -55,10 +55,10 @@
       </el-table-column>
       <el-table-column label="操作" align="center" width="280" class-name="small-padding fixed-width">
         <template slot-scope="{row}">
-          <el-button type="primary" size="mini" @click="handleUpdateUserInfo(row.mine_id,3)">
+          <el-button type="primary" size="mini" @click="handleUpdateUserInfo(row)">
             更新配置
           </el-button>
-          <el-button type="primary" size="mini" @click="AutoUpdateMineInfo(row)">
+          <el-button type="primary" size="mini" @click="AutoUpdateMineInfo(row.mine_id,3)">
             自动更新
           </el-button>
           <el-button size="mini" type="danger" disabled @click="handleDelete(row)">
