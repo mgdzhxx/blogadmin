@@ -44,8 +44,8 @@
         </template>
       </el-table-column>
       <el-table-column label="总数量" align="center" width="95">
-        <template slot-scope="scope">
-          <a @click="AutoUpdateMineInfo(row.mine_id,2)">{{ scope.row.total_acount }}</a>
+        <template slot-scope="{row}">
+          <a @click="AutoUpdateMineInfo(row.mine_id,2)">{{ row.total_acount }}</a>
         </template>
       </el-table-column>
       <el-table-column label="更新时间" width="150px" align="center">
