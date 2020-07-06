@@ -40,12 +40,12 @@
       </el-table-column>
       <el-table-column label="矿机可用数量" align="center" width="150px">
         <template slot-scope="{row}">
-          <span>{{ row.ava_acount }}</span>
+          <span @click="handleUpdateUserInfo(row.mine_id,1)">{{ row.ava_acount }}</span>
         </template>
       </el-table-column>
       <el-table-column label="总数量" align="center" width="95">
         <template slot-scope="scope">
-          <span>{{ scope.row.total_acount }}</span>
+          <span @click="handleUpdateUserInfo(row.mine_id,2)">{{ scope.row.total_acount }}</span>
         </template>
       </el-table-column>
       <el-table-column label="更新时间" width="150px" align="center">
@@ -53,10 +53,13 @@
           <span>{{ scope.row.update_at | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="操作" align="center" width="230" class-name="small-padding fixed-width">
+      <el-table-column label="操作" align="center" width="280" class-name="small-padding fixed-width">
         <template slot-scope="{row}">
-          <el-button type="primary" size="mini" @click="handleUpdateUserInfo(row)">
-            修改配置
+          <el-button type="primary" size="mini" @click="handleUpdateUserInfo(row.mine_id,3)">
+            更新配置
+          </el-button>
+          <el-button type="primary" size="mini" @click="AutoUpdateMineInfo(row)">
+            自动更新
           </el-button>
           <el-button size="mini" type="danger" disabled @click="handleDelete(row)">
             删除
@@ -101,7 +104,7 @@
 </template>
 
 <script>
-import { getMineList, updateMineInfo } from '@/api/mine'
+import { getMineList, updateMineInfo, autouUpdateMineInfo } from '@/api/mine'
 import waves from '@/directive/waves' // waves directive
 import { parseTime } from '@/utils'
 import Pagination from '@/components/Pagination' // secondary package based on el-pagination
@@ -193,6 +196,41 @@ export default {
             }
           })
         }
+      })
+    },
+    AutoUpdateMineInfo(mineID, types) {
+      // warning
+      this.$confirm(`ID:${mineID} 确认自动更新配置信息 [type: ${types}]?`, '警告', {
+        confirmButtonText: '确认',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(async() => {
+        const tempData = {
+          'mineID': mineID,
+          'type': types
+        }
+        // console.log('updateData', tempData)
+        autouUpdateMineInfo(tempData).then(response => {
+          if (response.status === 2000) {
+            this.$notify({
+              title: '自动更新',
+              message: '更新成功',
+              type: 'success',
+              duration: 2000
+            })
+            //  重新刷新 UserList
+            this.getList()
+          } else {
+            this.$notify({
+              title: '自动更新',
+              message: response.msg,
+              type: 'error',
+              duration: 2000
+            })
+          }
+        })
+      }).catch(err => {
+        console.error(err)
       })
     },
     handleDelete(row) {

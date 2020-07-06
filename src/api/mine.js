@@ -2,7 +2,7 @@
  * @Author: zhxx
  * @Date: 2020-06-29 11:19:27
  * @LastEditors: zhxx
- * @LastEditTime: 2020-06-29 16:26:39
+ * @LastEditTime: 2020-07-06 17:23:35
  */
 import request from '@/utils/request'
 
@@ -24,6 +24,14 @@ export function updateMineInfo(data) {
   })
 }
 
+// 自动更新矿场客户端信息
+export function autouUpdateMineInfo(data) {
+  return request({
+    url: '/admin/user/mine/autoupdate',
+    method: 'put',
+    data
+  })
+}
 // 获取矿机列表
 export function GetMachineList(query) {
   return request({
